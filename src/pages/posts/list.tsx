@@ -1,21 +1,16 @@
 import { useMany, HttpError } from "@refinedev/core";
 
-import { DateField, List, TagField, TextField, useTable } from "@refinedev/antd";
+import { DateField, List, TagField, TextField, useTable,  } from "@refinedev/antd";
 import { Table } from "antd";
-import { ICategory, IPost  } from "interfaces";
+import {ICategory, IPost  } from "interfaces";
 
 
-interface IPost {
-    id: number;
-    title: string;
-    content: string;
-    status: "published" | "draft" | "rejected";
-}
+
 
 export default function PostList() {
     const { tableProps } = useTable<IPost>();
 
-    const categoryIds = tableProps?.dataSource?.map((item) => item) ?? [];
+    const categoryIds  = tableProps?.dataSource?.map((item) => item.category.id) ?? [];
     const { data: categoriesData, isLoading } = useMany<ICategory> (
       {
         resource: "categories",
