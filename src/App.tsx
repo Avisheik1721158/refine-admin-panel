@@ -78,15 +78,15 @@ function App() {
                                 <Route index element={<PostList/> } />
                                 <Route
                                     path="show/:id"
-                                    element={<div>testing id</div>}
+                                    element={<PostShow/>}
                                 />
                                 <Route
                                     path="edit/:id"
-                                    element={<div>testing edit</div>}
+                                    element={<PostEdit/>}
                                 />
                                 <Route
                                     path="create"
-                                    element={<div>testing create</div>}
+                                    element={<PostCreate/>}
                                 />
                             </Route>
 
