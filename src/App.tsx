@@ -4,6 +4,7 @@ import {
   WelcomePage,
   Authenticated,
 } from "@refinedev/core";
+ 
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -28,6 +29,8 @@ import PostShow from "pages/posts/show";
 import PostEdit from "pages/posts/edit";
 import PostList from "pages/posts/list";
 import PostCreate from "pages/posts/create";
+import { TeamOutlined } from "@ant-design/icons";
+import stream from "pages/agent/stream";
 
 function App() {
   return (
@@ -50,7 +53,16 @@ function App() {
                 show: PostShow,
                 create: PostCreate,
                 edit: PostEdit,
+                canDelete:true,
               },
+              {
+                name: "Agent",
+                list: stream,
+                icon: <TeamOutlined />
+              
+              
+              },
+             
             ]}
           >
             {/* <Routes>

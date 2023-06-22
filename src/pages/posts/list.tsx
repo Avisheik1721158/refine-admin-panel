@@ -1,5 +1,5 @@
 import { useMany, HttpError } from "@refinedev/core";
-import { ShowButton, useSelect } from "@refinedev/antd";
+import { DeleteButton, EditButton, ShowButton, useSelect } from "@refinedev/antd";
 import {
   DateField,
   FilterDropdown,
@@ -8,7 +8,7 @@ import {
   TextField,
   useTable,
 } from "@refinedev/antd";
-import { Select, Table } from "antd";
+import { Select, Space, Table } from "antd";
 import { ICategory, IPost } from "interfaces";
 
 export default function PostList() {
@@ -24,7 +24,7 @@ export default function PostList() {
     },
   });
 
-  const  {selectProps} = useSelect<ICategory>({
+  const { selectProps } = useSelect<ICategory>({
     resource: "categories",
   });
   // const { options} = useSelect<ICategory>({
@@ -69,23 +69,23 @@ export default function PostList() {
                 mode="multiple"
                 placeholder="Select Category"
                 {...selectProps}
-                
               />
-           
             </FilterDropdown>
           )}
         />
 
-        <Table.Column
-         <IPost>
-         title="Actions"
-         dataIndex={"actions"}
-         render={(_text, record): React.ReactNode => {
-           return(
-             <ShowButton size="small" recordItemId={record.id} hideText/>
-           )
-         }}
-
+        <Table.Column<IPost>
+          title="Actions"
+          dataIndex={"actions"}
+          render={(_text, record): React.ReactNode => {
+            return (
+              <Space>
+                <ShowButton size="small" recordItemId={record.id} hideText />
+                <EditButton size="small" recordItemId={record.id} hideText />
+                <DeleteButton size="small" recordItemId={record.id} hideText />
+              </Space>
+            );
+          }}
         />
       </Table>
     </List>
