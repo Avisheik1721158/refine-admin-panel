@@ -30,7 +30,9 @@ import PostEdit from "pages/posts/edit";
 import PostList from "pages/posts/list";
 import PostCreate from "pages/posts/create";
 import { TeamOutlined } from "@ant-design/icons";
-import stream from "pages/agent/stream";
+import stream from "components/agent/stream";
+import Home from "pages/Dashboard/home";
+
 
 function App() {
   return (
@@ -47,6 +49,13 @@ function App() {
               warnWhenUnsavedChanges: true,
             }}
             resources={[
+              {
+                name: "dashboard",
+                list: Home,
+                
+              
+              
+              },
               {
                 name: "posts",
                 list: PostList,
@@ -86,6 +95,9 @@ function App() {
                                     <NavigateToResource resource="blog_posts" />
                                 }
                             />
+                            <Route path="dashboard">
+                            <Route index element={ <Home/> } />
+                            </Route>
                             <Route path="posts">
                                 <Route index element={<PostList/> } />
                                 <Route
